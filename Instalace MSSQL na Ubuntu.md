@@ -1,6 +1,8 @@
 # Instalace MSSQL na Ubuntu
 https://learn.microsoft.com/en-us/sql/linux/sql-server-linux-setup?view=sql-server-ver16
 
+https://learn.microsoft.com/cs-cz/sql/linux/sql-server-linux-configure-mssql-conf?view=sql-server-ver16
+
 1. MSSQL není standardní package pro Ubuntu, tak je potřeba přidat MS repository:
 ```shell
 wget -qO- https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add -
@@ -126,4 +128,19 @@ EXEC sys.sp_configure N'max server memory (MB)', N'10240'
 GO
 RECONFIGURE WITH OVERRIDE
 GO
+```
+
+15. Pokud je potřeba nastavit traceflag 272 globálně:
+```shell
+sudo /opt/mssql/bin/mssql-conf traceflag 272 on
+```
+ale není to nutnost, od SQL2017 je k dispozici parametr [`IDENTITY_CACHE`](https://learn.microsoft.com/en-us/sql/t-sql/statements/alter-database-scoped-configuration-transact-sql?view=sql-server-ver16).
+
+16. Konfigurační hodnoty je možný odmazat
+```shell
+sudo /opt/mssql/bin/mssql-conf traceflag 272 off
+```
+pro traceflagy nebo pro celý parametry
+```shell
+sudo /opt/mssql/bin/mssql-conf unset network.tcpport
 ```
