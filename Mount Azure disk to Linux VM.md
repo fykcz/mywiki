@@ -59,3 +59,4 @@ UUID=b3674c3c-3d79-4478-b1e0-0e8c670657f6   /datadrive   ext4   defaults   1   2
 # sudo mount /datadrive
 ```
 12. Nebo se dá domontovat všechno zaráz reloadem fstab `sudo mount -a`
+13. Velikost aktuálního adresáře si zobrazím `du -hs .`, když tam nedám to `s`, tak to mám i s podadresářema.
