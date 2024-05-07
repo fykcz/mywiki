@@ -12,10 +12,10 @@ SQL čte celé extenty (64kB) nebo segmenty neznámé velikosti.
 Největší problém je s RAID 5 s málo fyzickými disky. Je potřeba násobek 3 (aby to správně fungovalo).
 RAID 5 na datové soubory.
 ### Umístění souborů
-C: pro systém
-D: pro data
-E: transakční logy
-T: tempdb
+C: pro systém\
+D: pro data\
+E: transakční logy\
+T: tempdb\
 X: logy, trace files, audit logy
 ### Nastavení souborů databází
 Malé soubory -> častý filegrowth => je jednodušší zvětšovat najednou po větších kusech.
