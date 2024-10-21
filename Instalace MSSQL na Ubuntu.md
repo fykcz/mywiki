@@ -144,3 +144,55 @@ pro traceflagy nebo pro celý parametry
 ```shell
 sudo /opt/mssql/bin/mssql-conf unset network.tcpport
 ```
+
+## Upgrade SQL Serveru
+https://www.mssqltips.com/sqlservertip/4647/upgrading-sql-server-running-on-ubuntu-to-latest-update/
+
+https://www.dropbox.com/scl/fi/0ulc70mssrrps3hw40m7e/SQL-Server-2019-Diagnostic-Information-Queries.sql?rlkey=dzjo336wm8uaffhwr3x4xygdr&e=2&dl=0
+
+```
+#check sql server package details
+sudo apt-cache show mssql-server
+```
+
+```
+#update packages list
+sudo apt-get update
+```
+
+```
+#check available updates for SQL Server
+sudo apt-get --just-print upgrade
+```
+
+```
+#Run apt-get update to update the source list of package.
+sudo apt-get update mssql-server
+```
+
+https://learn.microsoft.com/en-us/sql/linux/sql-server-linux-change-repo?view=sql-server-ver16&pivots=ld2-ubuntu
+
+```
+# Check for previously configured repositories
+sudo cat /etc/apt/sources.list
+```
+
+```
+# Import the public repository GPG keys
+sudo curl https://packages.microsoft.com/keys/microsoft.asc | sudo tee /etc/apt/trusted.gpg.d/microsoft.asc
+```
+
+```
+# configure the repository
+sudo add-apt-repository "$(curl https://packages.microsoft.com/config/ubuntu/20.04/mssql-server-2019.list)"
+```
+
+```
+sudo apt-get update
+```
+
+```
+#Upgrade SQL Server.
+sudo apt-get install mssql-server
+```
+
